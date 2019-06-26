@@ -1,3 +1,5 @@
+import { action } from "easy-peasy";
+
 //model is just an object that has all of our state and objects
 export default {
   todos: [
@@ -16,5 +18,17 @@ export default {
       title: "Determine the meaning of life",
       completed: false
     }
-  ]
+  ],
+  //  Actions
+  toggle: action((state, id) => {
+    state.todos.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+  }),
+  remove: action((state, id) => {
+    state.todos = state.todos.filter(todo => todo.id !== id);
+  })
 };
