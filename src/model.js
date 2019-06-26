@@ -1,4 +1,5 @@
 import { action } from "easy-peasy";
+import uuid from "uuid";
 
 //model is just an object that has all of our state and objects
 export default {
@@ -20,6 +21,10 @@ export default {
     }
   ],
   //  Actions
+  add: action((state, todo) => {
+    todo.id = uuid.v4();
+    state.todos = [...state.todos, todo];
+  }),
   toggle: action((state, id) => {
     state.todos.map(todo => {
       if (todo.id === id) {
