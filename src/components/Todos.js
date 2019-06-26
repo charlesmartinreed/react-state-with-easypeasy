@@ -1,25 +1,11 @@
 import React, { Fragment } from "react";
+import { useStore } from "easy-peasy";
 import TodoItem from "./TodoItem";
 
 const Todos = () => {
-  const todos = [
-    {
-      id: 1,
-      title: "Take out the trash",
-      completed: true
-    },
-    {
-      id: 2,
-      title: "Go grocery shopping",
-      completed: false
-    },
-    {
-      id: 3,
-      title: "Determine the meaning of life",
-      completed: false
-    }
-  ];
+  // import our data, using a Hook, provided by easy-peasy
 
+  const todos = useStore(state => state.todos);
   return (
     <Fragment>
       <h1>Todos</h1>
